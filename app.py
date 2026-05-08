@@ -7,7 +7,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from predictor import predict, get_shap_chart, get_risk_gauge, get_feature_status_df
+from predictor import predict, get_shap_chart, get_risk_gauge, get_feature_status_df, init_models
 
 # --- PAGE CONFIG ---
 st.set_page_config(
@@ -16,6 +16,9 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# Initialize models
+init_models()
 
 # --- CUSTOM CSS ---
 st.markdown("""

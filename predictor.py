@@ -70,8 +70,16 @@ NORMAL_RANGES = {
 }
 
 # --- MODEL LOADING ---
-def load_or_train_models():
+gb_model = None
+xgb_model = None
+scaler = None
+
+def init_models():
     """Loads models from disk, or triggers training if they don't exist."""
+    global gb_model, xgb_model, scaler
+    if gb_model is not None:
+        return
+        
     gb_path = "models/gb_model.pkl"
     xgb_path = "models/xgb_model.pkl"
     scaler_path = "models/scaler.pkl"
@@ -85,16 +93,9 @@ def load_or_train_models():
             prepare_data.main()
             train_model.train_models()
             
-    return (
-        joblib.load(gb_path),
-        joblib.load(xgb_path),
-        joblib.load(scaler_path)
-    )
-
-try:
-    gb_model, xgb_model, scaler = load_or_train_models()
-except Exception as e:
-    raise RuntimeError(f"Failed to load or train models. Details: {e}")
+    gb_model = joblib.load(gb_path)
+    xgb_model = joblib.load(xgb_path)
+    scaler = joblib.load(scaler_path)
 
 # --- FUNCTIONS ---
 
