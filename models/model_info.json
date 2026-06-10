@@ -1,0 +1,1 @@
+{"model_name": "RandomForest", "accuracy": 0.7532467532467533, "roc_auc": 0.8315886134067952, "feature_names": ["Gender", "Pregnancies", "Glucose", "BloodPressure", "SkinThickness", "Insulin", "BMI", "DiabetesPedigreeFunction", "Age"]}
